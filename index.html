@@ -25,8 +25,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>SDSeg</title>
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <title>SPACE</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%9A%80</text></svg>">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="static/css/bulma.min.css">
@@ -35,6 +35,114 @@
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
+
+  <style>
+    /* Add breathing room between body figures and surrounding text */
+    .section.hero .content img,
+    .section.hero .column img {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Highlights carousel */
+    .hl-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .hl-tab {
+      cursor: pointer;
+      border: 1.5px solid #dbdbdb;
+      background: #fff;
+      border-radius: 9999px;
+      padding: 0.45rem 1.1rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #555;
+      transition: all 0.2s ease;
+    }
+    .hl-tab:hover { border-color: indigo; color: indigo; }
+    .hl-tab.is-active {
+      background: indigo;
+      color: #fff;
+      border-color: indigo;
+    }
+    .hl-carousel { position: relative; }
+    .hl-slide { display: none; }
+    .hl-slide.is-active { display: block; animation: hl-fade 0.35s ease; }
+    @keyframes hl-fade { from { opacity: 0; } to { opacity: 1; } }
+    .hl-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .hl-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .hl-cell { text-align: center; }
+    .hl-cell p { margin-bottom: 0.9rem; }
+    .hl-divider {
+      align-self: stretch;
+      border-left: 2px dotted #b5b5b5;
+      margin: 0 0.25rem;
+    }
+    .hl-arrow {
+      position: absolute;
+      top: 45%;
+      transform: translateY(-50%);
+      z-index: 5;
+      cursor: pointer;
+      border: none;
+      background: rgba(75, 0, 130, 0.85);
+      color: #fff;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      font-size: 1.4rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+    .hl-arrow:hover { background: indigo; }
+    .hl-prev { left: -0.5rem; }
+    .hl-next { right: -0.5rem; }
+    .hl-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 1.25rem;
+    }
+    .hl-dot {
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 9999px;
+      background: #d0d0d0;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .hl-dot:hover { background: #a98fd0; }
+    .hl-dot.is-active { background: indigo; transform: scale(1.2); }
+    @media screen and (max-width: 768px) {
+      .hl-divider { display: none; }
+    }
+  </style>
+
+  <!-- MathJax for LaTeX rendering -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]'], ['$$', '$$']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
@@ -53,11 +161,15 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">
-              Title of the paper</h1>
+              SPACE: Enabling Learning from Cross-Robot Data Toward Generalist Policies</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="https://lin-tianyu.github.io/" target="_blank">Tianyu Lin</a><sup>1*</sup></span>
+                <a href="http://haeone.site" target="_blank">Haeone Lee</a><sup>1</sup>, </span>
+                <a href="https://scholar.google.com/citations?user=_Kw32VoAAAAJ&hl=ko" target="_blank">Byeongguk Jeon</a><sup>1,2</sup>, </span>
+                <a href="https://sites.google.com/view/suchaejeong" target="_blank">Suchae Jeong</a><sup>1,2</sup>, </span>
+                <a href="https://jiankimr.github.io/" target="_blank">Jian Kim</a><sup>3</sup>, </span>
+                <a href="https://sites.google.com/view/kiminlee/home" target="_blank">Kimin Lee</a><sup>1,2</sup></span>
               <!-- <span class="author-block">
                 <a target="_blank">Zhiguang Chen</a><sup>2</sup>,</span>
               <span class="author-block">
@@ -69,13 +181,13 @@
             </div>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <sup>1</sup>Institution<br>
+                <sup>1</sup>KAIST&nbsp;&nbsp; <sup>2</sup>Config&nbsp;&nbsp; <sup>3</sup>Yonsei University<br>
                 <!-- {<sup>1</sup>School of Biomedical Engineering, 
                 <sup>2</sup>School of Computer Science and Engineering}, Sun Yat-sen University<br>
                 <sup>3</sup>International School, Beijing University of Posts and Telecommunications -->
               </span>
-              <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding Author</small></span><br>
-              <span class="author-block" style="background: linear-gradient(to right, rgb(255, 0, 0), rgb(0, 255, 0), rgb(0, 0, 0)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;line-height: 1.5;"><b>Conference/Journal Name</b></span>
+              <!-- <span class="eql-cntrb"><small><br><sup>*</sup>haeone.lee@kaist.ac.kr</small></span><br> -->
+              <span class="author-block" style="background: linear-gradient(to right, rgb(255, 0, 0), rgb(0, 255, 0), rgb(0, 0, 0)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;line-height: 1.5;"></span>
             </div>
 
 
@@ -92,7 +204,7 @@
               </a>
             </span>
 
-              <!-- Arxiv PDF link -->
+              <!-- Arxiv PDF link
               <span class="link-block">
                 <a href="https://arxiv.org/pdf/2406.18361.pdf" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
@@ -102,15 +214,15 @@
                   <span>Arxiv Paper</span>
                 </a>
               </span>
+               -->
 
                 <!-- Github link -->
                 <span class="link-block">
-                  <a href="https://github.com/lin-tianyu/Stable-Diffusion-Seg" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
+                  <a class="external-link button is-normal is-rounded is-dark" disabled style="cursor: not-allowed;">
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
-                    <span>Code</span>
+                    <span>Code (Coming soon)</span>
                   </a>
                 </span>
 
@@ -127,14 +239,14 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <img src="static/images/framework-v2.jpg" alt="MY ALT TEXT" , width="700" />
-        <h4 class="subtitle has-text-centered">The overview of the proposed method.</h4>
+        <img src="static/images/space_framework.png" alt="Overview of the SPACE framework" width="900" />
+        <h4 class="subtitle has-text-left" style="margin-top: 1rem;">We propose <b>SPACE</b>, a framework that adopts <b>Cartesian state delta</b> as a universal robot action and continuously <b>adapts</b> to different downstream dynamics during execution.</h4>
       </div>
     </div>
   </section>
   <!-- End teaser -->
 
-  <section class="section hero is-light">
+  <section class="section hero is-light" id="highlights">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
@@ -142,11 +254,126 @@
             Highlights</h2>
         </div>
       </div>
-      <p>
-        🌟 Highlights are the summary of the proposed work. They can be contributions in the paper or preferred key points.<br>
-        🌟 Point 2
-        
-      </p>
+      <!-- <h4 class="subtitle has-text-left"><b>SPACE</b> enables learning and deployment across heterogeneous robots and can adapt to new dynamics at test time, such as increased control Hz and heavy object weights.</h4> -->
+      <!-- Tab navigation -->
+      <div class="hl-tabs">
+        <button class="hl-tab is-active" data-idx="0">Cross-embodiment (zero-shot)</button>
+        <button class="hl-tab" data-idx="1">Cross-hardware (DROID)</button>
+        <button class="hl-tab" data-idx="2">Dynamics adaptation (heavy object)</button>
+      </div>
+
+      <div id="highlights-carousel" class="hl-carousel">
+        <button class="hl-arrow hl-prev" aria-label="Previous">&#8249;</button>
+
+        <!-- Slide 1: Zero-shot cross-embodiment transfer -->
+        <div class="hl-slide is-active">
+          <div class="hl-row">
+            <div class="hl-cell">
+              <p class="is-size-6 has-text-weight-semibold has-text-grey">Training data</p>
+              <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
+                <source src="static/videos/ur5_train.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="hl-divider"></div>
+            <div class="hl-stack">
+              <div class="hl-cell">
+                <p class="is-size-6 has-text-weight-semibold" style="color: #2e7d32;">SPACE (Ours)</p>
+                <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
+                  <source src="static/videos/zero_shot_space.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="hl-cell">
+                <p class="is-size-6 has-text-weight-semibold has-text-grey">Vanilla policy</p>
+                <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
+                  <source src="static/videos/zero_shot_policy.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+          <h3 class="title is-5 has-text-centered" style="margin-top: 1.25rem;">SPACE enables zero-shot embodiment transfer from UR5 to Franka.</h3>
+        </div>
+
+        <!-- Slide 2: Multi-hardware learning from DROID -->
+        <div class="hl-slide">
+          <div class="hl-row">
+            <div class="hl-cell">
+              <p class="is-size-6 has-text-weight-semibold has-text-grey">Training data</p>
+              <img src="static/images/droid_image.png" alt="DROID dataset: demonstrations across many labs and hardware units" style="height: 360px; width: auto; max-width: 100%;" />
+            </div>
+            <div class="hl-divider"></div>
+            <div class="hl-stack">
+              <div class="hl-cell">
+                <p class="is-size-6 has-text-weight-semibold" style="color: #2e7d32;">SPACE (Ours)</p>
+                <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
+                  <source src="static/videos/droid_space.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="hl-cell">
+                <p class="is-size-6 has-text-weight-semibold has-text-grey">Vanilla policy</p>
+                <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
+                  <source src="static/videos/droid_policy.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+          <h3 class="title is-5 has-text-centered" style="margin-top: 1.25rem;">SPACE improves learning from <a href="https://droid-dataset.github.io/" target="_blank">DROID</a> data, which is collected across multiple robots.</h3>
+        </div>
+
+        <!-- Slide 3: Heavy object dynamics adaptation -->
+        <div class="hl-slide">
+          <div class="is-flex is-justify-content-center" style="gap: 1.5rem;">
+            <div class="hl-cell">
+              <p class="is-size-6 has-text-weight-semibold has-text-grey">Empty box (train)</p>
+              <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
+                <source src="static/videos/box_empty.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="hl-cell">
+              <p class="is-size-6 has-text-weight-semibold" style="color: #2e7d32;">SPACE (Ours)</p>
+              <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
+                <source src="static/videos/empty_box_space.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="hl-cell">
+              <p class="is-size-6 has-text-weight-semibold has-text-grey">Vanilla policy</p>
+              <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
+                <source src="static/videos/empty_box_control_command.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <hr style="border: none; border-top: 2px dotted #b5b5b5; margin: 1.5rem auto; max-width: 700px;">
+          <div class="is-flex is-justify-content-center" style="gap: 1.5rem;">
+            <div class="hl-cell">
+              <p class="is-size-6 has-text-weight-semibold has-text-grey">Heavy box (eval)</p>
+              <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
+                <source src="static/videos/box_full.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="hl-cell">
+              <p class="is-size-6 has-text-weight-semibold" style="color: #2e7d32;">SPACE (Ours)</p>
+              <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
+                <source src="static/videos/heavy_space.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="hl-cell">
+              <p class="is-size-6 has-text-weight-semibold has-text-grey">Vanilla policy</p>
+              <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
+                <source src="static/videos/heavy_policy.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <h3 class="title is-5 has-text-centered" style="margin-top: 1.25rem;">SPACE enables adapting to different execution dynamics such as object weights.</h3>
+        </div>
+
+        <button class="hl-arrow hl-next" aria-label="Next">&#8250;</button>
+      </div>
+
+      <!-- Dot indicators -->
+      <div class="hl-dots">
+        <span class="hl-dot is-active" data-idx="0"></span>
+        <span class="hl-dot" data-idx="1"></span>
+        <span class="hl-dot" data-idx="2"></span>
+      </div>
     </div>
   </section>
 
@@ -156,60 +383,54 @@
         <div class="column is-four-fifths">
           <h2 class="title is-2" style="background: linear-gradient(to right,  indigo, indigo, skyblue, indigo, indigo); -webkit-background-clip: text; -webkit-text-fill-color: transparent;line-height: 1.5;">
             Motivation</h2>
-        <h5 class="title is-5" style="text-align: center;">
-          Using a single sentence to summarize the motivation of the paper.
-        </h5>
 
-        <div class="columns is-centered">
-        <!-- reenact. -->
-        <div class="column">
-          <div class="content">
-            <h4 class="title is-5" style="text-align: center;">🔒 Challenges</h4>
-            <p>
-            (1) blablabla<br>
-            (2) blablabla
-            </p>
-          </div>
+        <!-- Challenges -->
+        <div class="content">
+          <h4 class="title is-5" style="text-align: center;">🔒 Discrepancies in actions across different robot setups</h4>
+          <img src="static/images/replay.png" alt="Control commands vary across embodiments, hardware units, and dynamics conditions" style="width: 100%; max-width: 1100px;" />
+          <p class="is-size-5" style="text-align: justify;">Replaying actions collected from one robot in the other robot results in different trajectories.</p>
+          <h4 class="title is-5" style="text-align: center;"> 🤔 Why?: Actions are defined as underlying robot control command</h4>
+          <img src="static/images/motivation.png" alt="Different robots require different actions to achieve the same motion" style="width: 100%; max-width: 1100px;" />
+          <p class="is-size-6" style="text-align: justify;">Different controller implementations across embodiments leads to <b>different control commands for the same motion.</b> The robot motion is also affected by hardware wear and tear for the same control command.</p>
+          <h4 class="title is-5" style="text-align: center; color: #e53935;">❗ This significantly hurts learning &amp; deployment across different robots.</h4>
         </div>
-        <!--/ reenact -->
-        <!-- swap. -->
-        <div class="column">
-          <h4 class="title is-5" style="text-align: center;">🔑 Solutions</h4>
-          <div class="columns is-centered">
-            <div class="column content">
-              <p>
-              <!-- <br> -->
-            (1) blablabla<br>
-            (2) blablabla
-              </p>
-            </div>
-          </div>
-        </div>
-        <!--/ swap. -->
-      </div>
 
-            <div class="hero-body">
-              <img src="static/images/LatentRep.jpg" alt="MY ALT TEXT" , width="1000" />
-              <h4 class="subtitle has-text-centered"><b>Caption of the figure.</b></h4>
-              Detailed descriptions.
-            </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section hero is-light">
+  <section class="section hero">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-2" style="background: linear-gradient(to right,  indigo, indigo, skyblue, indigo, indigo); -webkit-background-clip: text; -webkit-text-fill-color: transparent;line-height: 1.5;">
-            Module 1</h2>
-            <h5 class="title is-5" style="text-align: center;">
-              Single sentence to summarize the first module of the paper.
-            </h5>
-            <div class="hero-body">
-              <img src="static/images/ReverseCurve.png" alt="MY ALT TEXT" , width="900" />
-              <h4 class="subtitle has-text-centered"><b>Caption of the figure.</b></h4>
+            Our framework: SPACE</h2>
+            <div class="content">
+              <h4 class="title is-5" style="text-align: left; white-space: nowrap;">🔑 Predict Cartesian state delta, an actual robot movement during data collection.</h4>
+              <img src="static/images/cartesian_state_delta_policy.png" alt="Cartesian state delta policy: VLA model outputs end-effector displacement" style="width: 100%; max-width: 1100px;" />
+              <p class="is-size-6" style="text-align: justify;">We train policy to predict <b>Cartesian state delta</b>, an end-effector displacement. Cartesian state delta is <b>agnostic to robot dynamics</b> varied by downstream controllers or hardware characteristics since it only describes <b>end-effector motion</b>. It can be obtained from any robot that provides end-effector Cartesian pose.
+              <!-- Specifically, we use the following behavior cloning objective:</p> -->
+              <!-- <p class="has-text-centered">
+                \[ \max_{\theta}\; \mathbb{E}_{\tau \sim \mathcal{D},\, (o_t, \Delta p_t) \sim \tau}\left[ \log \pi_{\theta}(\Delta p_t \mid o_t) \right]. \]
+              </p> -->
+              <h4 class="title is-5" style="text-align: left; white-space: nowrap; margin-top: 3rem;">🔑 Convert the predicted Cartesian state delta to robot-specific control commands</h4>
+              <img src="static/images/space.png" alt="SPACE: VLA model with Action Adapter converting Cartesian state delta into robot-specific control commands" style="width: 100%; max-width: 1100px;" />
+              <p class="is-size-6" style="text-align: justify;">However, executing the predicted displacement on a target robot is <b>non-trivial</b>, since the resulting motion depends on the robot's controller and dynamics. <b>Action Adapter</b> learns a per-robot mapping from a Cartesian state delta to the control command that realizes it using a linear model from calibration dataset \( \mathcal{D}_{\mathrm{cal}} \) consists of only 10 trajectories:</p>
+              <div class="is-flex is-justify-content-center is-align-items-center" style="gap: 3rem; flex-wrap: wrap;">
+                <span>\( \min_{W_0, b_0} \sum_{(\Delta p, u) \in \mathcal{D}_{\mathrm{cal}}} \left\| W_0 \Delta p + b_0 - u \right\|_2^2. \)</span>
+              </div>
+              <p class="is-size-6" style="text-align: justify; margin-top: 1.5rem;">Then, it is continuously updated online from policy rollout using <b><a href="https://en.wikipedia.org/wiki/Least_mean_squares_filter" target="_blank">LMS algorithm</a></b> to adapt to varying dynamics during deployment.
+              </p>
+              <p class="has-text-centered">
+                \[ \begin{aligned}
+                e_t &= W_t \Delta p_t + b_t - u_t \quad \text{(Action Adapter error)} \\[4pt]
+                W_{t+1} &= W_t - \mu e_t (\Delta p_t)^\top, \qquad b_{t+1} = b_t - \mu e_t \quad \text{(Online update)}
+                \end{aligned} \]
+              </p>
+              <p class="is-size-6 has-text-left" style="margin-top: 1rem;">
+                🚀 <a href="#highlights" onclick="var t=document.querySelectorAll('.hl-tab'); if(t[2]) t[2].click();"><b>See Action Adapter on the job</b> (adapting control commands to lift unseen heavy object)!</a>
+              </p>
             </div>
             <!-- <div class="hero-body">
               <img src="static/images/ReverseProcess.jpeg" alt="MY ALT TEXT" , width="1000" />
@@ -221,6 +442,7 @@
     </div>
 
     <!-- Video carousel -->
+   <!--
    <section class="hero is-small">
    <div class="hero-body">
      <div class="container">
@@ -236,9 +458,11 @@
    </div>
    <h4 class="subtitle has-text-centered"><b>Showing rolling images here.</b></h4>
  </section> 
+   -->
    <!-- End video carousel -->
   </section>
 
+  <!-- Module 2 section (commented out)
   <section class="section hero">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
@@ -261,18 +485,77 @@
       </div>
     </div>
   </section>
+  -->
+  <!-- End Module 2 section -->
 
-  <section class="section hero is-light">
+  <section class="section hero">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-2" style="background: linear-gradient(to right,  indigo, indigo, skyblue, indigo, indigo); -webkit-background-clip: text; -webkit-text-fill-color: transparent;line-height: 1.5;">
-            Other Qualitative Analysis</h2>
-            <div class="hero-body">
-              <img src="static/images/Conditioner.png" alt="MY ALT TEXT" , width="900" />
-              <h2 class="subtitle has-text-centered"><b>Caption of the figure.</b></h2>
-                  Detailed descriptions.
+            Experiments</h2>
+          <div style="background: #f3f0fa; border-left: 5px solid indigo; border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; text-align: left;">
+            <p class="is-size-6" style="margin-bottom: 0;">We compare SPACE against policy predicting control commands, referred to as <b>Control command</b>, which is common practice in policy learning.</p>
+          </div>
+          <h3 class="title is-4" style="text-align: left; color: black;">Q1. Does SPACE improve cross-embodiment learning?</h3>
+          <img src="static/images/figure_cross_embodiment_environment.png" alt="Cross-embodiment experiment setup: training on UR5+FR3, UR5 only, and Human+FR3, executed on FR3" style="width: 100%; max-width: 1100px;" />
+          <p class="is-size-6" style="text-align: justify;">To test the effectiveness of <b>SPACE</b>, we experiment co-training Franka Research 3 (FR3) data with UR5 data or <a href="https://fastumi.com/" target="_blank">UMI</a> hand-held gripper data. We hypothesize that co-training using control command will suffer from discrepancies between different embodiments.</p>
+          <img src="static/images/cotraining_result.png" alt="Co-training results: SPACE outperforms control-command policy across tasks" style="width: 100%; max-width: 1100px;" />
+          <p class="is-size-6" style="text-align: justify;"><b>SPACE boosts co-training performance</b> across UR5 and FR3 robot, and UMI human hand-held gripper and FR3 robot, while conventional policy of predicting control commands displays relatively low performances. It even enables zero-shot execution of policy learned solely from UR5 data in FR3.</p>
+          <!-- <div style="background: #f3f0fa; border-left: 5px solid indigo; border-radius: 6px; padding: 1rem 1.25rem; margin-top: 1.5rem; text-align: left;">
+            <p class="is-size-6" style="margin-bottom: 0;"><b>💡 Summary:</b> .</p>
+          </div> -->
+          <h3 class="title is-4" style="text-align: left; color: black; margin-top: 3rem;">Q2. Does SPACE improve cross-hardware learning?</h3>
+          <p class="is-size-6" style="text-align: justify;">Even though the embodiment and controller implementation are the same, <b>different hardware units exhibit discrepancies in dynamics</b> due to wear, manufacturing variability.</p>
+          <img src="static/images/different_hardware.png" alt="Different hardware units of the same robot exhibit discrepancies in dynamics" style="width: 100%; max-width: 1100px;" />
+          <h4 class="subtitle is-5 has-text-centered has-text-weight-bold" style="font-family: 'Times New Roman', Times, serif;">Execution in different hardware from training</h4>
+          <p class="is-size-6" style="text-align: justify;">When deploying policy in robot not used during data collection, control command policy suffers from degradation due to subtle dynamics difference, while SPACE stays robust.</p>
+          <img src="static/images/droid_success_rate.png" alt="DROID success rate: SPACE vs. control-command and other action-space baselines" style="width: 100%; max-width: 1100px;" />
+          <h4 class="subtitle is-5 has-text-centered has-text-weight-bold" style="font-family: 'Times New Roman', Times, serif;">DROID success rate</h4>
+          <p class="is-size-6" style="text-align: justify;"><b>SPACE achieves the best performance when learning from <a href="https://droid-dataset.github.io/" target="_blank">DROID</a></b> data collected from multiple hardware units of the FR3 robot. This is because other control commands are all specific to the data collection robot’s dynamics, which are inconsistent across different hardware units.</p>
+          <h3 class="title is-4" style="text-align: left; color: black; margin-top: 3rem;">Q3. Does SPACE remain robust under a dynamics shift from training time?</h3>
+          <p class="is-size-6" style="text-align: justify;"><b>SPACE can also adapt to the changes in environment dynamics from training.</b> We collect training data using empty box and put heavy metals during inference. In this setup, control command policy is unable to lift the heavy box and success rate drops to 0%. Meanwhile, SPACE adapts control command using Action Adapter to lift the heavy box and achieve 92% success rate.</p>
+          <div class="is-flex is-justify-content-center is-align-items-center" style="gap: 0.75rem; margin: 1.5rem 0;">
+            <div class="has-text-centered">
+              <p class="is-size-7 has-text-weight-semibold has-text-grey">Empty box (train)</p>
+              <video autoplay controls muted loop playsinline style="height: 200px; width: auto; max-width: 100%;">
+                <source src="static/videos/box_empty_v.mp4" type="video/mp4">
+              </video>
             </div>
+            <span class="is-size-3 has-text-grey" style="line-height: 1;">&#8594;</span>
+            <div class="has-text-centered">
+              <p class="is-size-7 has-text-weight-semibold has-text-grey">Heavy box (eval)</p>
+              <video autoplay controls muted loop playsinline style="height: 200px; width: auto; max-width: 100%;">
+                <source src="static/videos/box_full_v.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="has-text-centered">
+              <p class="is-size-7 has-text-weight-semibold" style="color: #2e7d32;">SPACE (Ours)</p>
+              <video autoplay controls muted loop playsinline style="height: 200px; width: auto; max-width: 100%;">
+                <source src="static/videos/heavy_space.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="has-text-centered">
+              <p class="is-size-7 has-text-weight-semibold has-text-grey">Vanilla policy</p>
+              <video autoplay controls muted loop playsinline style="height: 200px; width: auto; max-width: 100%;">
+                <source src="static/videos/heavy_policy.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <h4 class="subtitle is-5 has-text-centered has-text-weight-bold" style="font-family: 'Times New Roman', Times, serif;">Object weight change during deployment</h4>
+          <p class="is-size-6" style="text-align: justify;">SPACE can execute the policy under different control Hz. For example, we accelerate policy execution by increasing control hz to 30Hz, from 15Hz used during data collection. Meanwhile, policy predicting control commands degrades at 30 Hz due to discrepancy from training time.</p>
+          <div class="is-flex is-justify-content-center is-align-items-center" style="gap: 1.5rem; flex-wrap: nowrap;">
+            <div class="has-text-centered" style="flex: 0 0 52%; max-width: 52%;">
+              <img src="static/images/control_hz.png" alt="SPACE executes reliably at higher control Hz while control-command policy degrades" style="width: 100%; height: auto;" />
+              <h4 class="subtitle is-5 has-text-centered has-text-weight-bold" style="margin-top: 0.5rem; margin-bottom: 0; transform: translateY(-1.5rem); font-family: 'Times New Roman', Times, serif;">Control Hz change during deployment<br>(success rate &amp; execution time)</h4>
+            </div>
+            <div class="has-text-centered" style="flex: 0 0 43%; max-width: 43%;">
+              <img src="static/images/gain.png" alt="Action Adapter gain adapts to the control Hz change" style="width: 100%; height: auto;" />
+              <h4 class="subtitle is-5 has-text-centered has-text-weight-bold" style="margin-top: 0.5rem; margin-bottom: 0; transform: translateY(1.5rem); font-family: 'Times New Roman', Times, serif;">Gain change during deployment (success rate)</h4>
+            </div>
+          </div>
+          <p class="is-size-6" style="text-align: justify;">Also, it can adapt to different controller gains from training time. Multiplying proportional gains (Kp) by 0.5x or 1.5x significantly drops success rates for control command policy while SPACE remains robust.</p>
+
         </div>
       </div>
     </div>
@@ -327,15 +610,22 @@
   <section class="section hero" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTex</h2>
-      <pre><code>
-        @inproceedings{lin2024stable,
-          title={Stable Diffusion Segmentation for Biomedical Images with Single-step Reverse Process},
-          author={Lin, Tianyu and Chen, Zhiguang and Yan, Zhonghao and Yu, Weijiang and Zheng, Fudan},
-          booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
-          year={2024},
-          organization={Springer}
-        }        
-      </code></pre>
+      <p>If you find our work useful, please cite the paper!</p>
+      <div style="position: relative;">
+        <button class="button is-small is-dark is-rounded" style="position: absolute; top: 0.75rem; right: 0.75rem; z-index: 2;"
+          onclick="(function(btn){var t=document.getElementById('bibtex-entry').innerText;navigator.clipboard.writeText(t).then(function(){var o=btn.innerText;btn.innerText='Copied!';setTimeout(function(){btn.innerText=o;},1500);});})(this)">
+          <span class="icon is-small"><i class="far fa-copy"></i></span>
+          <span>Copy</span>
+        </button>
+        <pre><code id="bibtex-entry">
+@article{lee2026space,
+  title={SPACE: Enabling Learning from Cross-Robot Data Toward Generalist Policies},
+  author={Lee, Haeone and Jeon, Byeongguk and Jeong, Suchae and Kim, Jian and Lee, Kimin},
+  booktitle={TBD},
+  year={2026},
+}        
+        </code></pre>
+      </div>
     </div>
   </section>
   <!--End BibTex citation -->
@@ -368,6 +658,49 @@
   <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
 
   <!-- End of Statcounter Code -->
+
+  <script>
+    (function () {
+      var carousel = document.getElementById('highlights-carousel');
+      if (!carousel) return;
+      var slides = carousel.querySelectorAll('.hl-slide');
+      var tabs = document.querySelectorAll('.hl-tab');
+      var dots = document.querySelectorAll('.hl-dot');
+      var cur = 0;
+
+      function show(i) {
+        cur = (i + slides.length) % slides.length;
+        slides.forEach(function (s, idx) { s.classList.toggle('is-active', idx === cur); });
+        tabs.forEach(function (t, idx) { t.classList.toggle('is-active', idx === cur); });
+        dots.forEach(function (d, idx) { d.classList.toggle('is-active', idx === cur); });
+      }
+
+      tabs.forEach(function (t, idx) { t.addEventListener('click', function () { show(idx); }); });
+      dots.forEach(function (d, idx) { d.addEventListener('click', function () { show(idx); }); });
+
+      var prev = carousel.querySelector('.hl-prev');
+      var next = carousel.querySelector('.hl-next');
+      if (prev) prev.addEventListener('click', function () { show(cur - 1); });
+      if (next) next.addEventListener('click', function () { show(cur + 1); });
+
+      show(0);
+    })();
+  </script>
+
+  <!-- Enforce always-muted videos (volume control stays visible but cannot produce sound) -->
+  <script>
+    (function () {
+      function lockMute(v) {
+        v.muted = true;
+        v.volume = 0;
+      }
+      var videos = document.querySelectorAll('video');
+      videos.forEach(function (v) {
+        lockMute(v);
+        v.addEventListener('volumechange', function () { lockMute(v); });
+      });
+    })();
+  </script>
 
 </body>
 
