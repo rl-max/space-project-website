@@ -240,7 +240,7 @@
     <div class="container is-max-desktop">
       <div class="hero-body">
         <img src="static/images/space_framework.png" alt="Overview of the SPACE framework" width="900" />
-        <h4 class="subtitle has-text-left" style="margin-top: 1rem;">We propose <b>SPACE</b>, a framework that adopts <b>Cartesian state delta</b> as a universal robot action and continuously <b>adapts</b> to different downstream dynamics during execution.</h4>
+        <h4 class="subtitle has-text-left" style="margin-top: 1rem;">We propose <b>SPACE</b> (<b>S</b>tate <b>P</b>rediction and <b>A</b>daptive <b>C</b>ommand <b>E</b>xecution), a framework that adopts <b>Cartesian state delta</b> as a universal robot action and continuously <b>adapts</b> to different downstream dynamics during execution.</h4>
       </div>
     </div>
   </section>
@@ -416,7 +416,7 @@
               </p> -->
               <h4 class="title is-5" style="text-align: left; white-space: nowrap; margin-top: 3rem;">🔑 Convert the predicted Cartesian state delta to robot-specific control commands</h4>
               <img src="static/images/space.png" alt="SPACE: VLA model with Action Adapter converting Cartesian state delta into robot-specific control commands" style="width: 100%; max-width: 1100px;" />
-              <p class="is-size-6" style="text-align: justify;">However, executing the predicted displacement on a target robot is <b>non-trivial</b>, since the resulting motion depends on the robot's controller and dynamics. <b>Action Adapter</b> learns a per-robot mapping from a Cartesian state delta to the control command that realizes it using a linear model from calibration dataset \( \mathcal{D}_{\mathrm{cal}} \) consisting of only 10 trajectories:</p>
+              <p class="is-size-6" style="text-align: justify;">However, executing the predicted displacement on a target robot is <b>non-trivial</b>, since the resulting motion depends on the robot's controller and dynamics. <b>Action Adapter</b> learns a per-robot mapping from a Cartesian state delta to the control command \( u \) that realizes it using a linear model from calibration dataset \( \mathcal{D}_{\mathrm{cal}} \) (only 10 trajectories):</p>
               <div class="is-flex is-justify-content-center is-align-items-center" style="gap: 3rem; flex-wrap: wrap;">
                 <span>\( \min_{W_0, b_0} \sum_{(\Delta p, u) \in \mathcal{D}_{\mathrm{cal}}} \left\| W_0 \Delta p + b_0 - u \right\|_2^2. \)</span>
               </div>
